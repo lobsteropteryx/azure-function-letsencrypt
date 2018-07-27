@@ -47,7 +47,7 @@ This will create a resource group and a function app, together with an applicati
 
 ### Installing the Let's Encrypt extension
 
-Once the function app is in place, you need to manually install the [letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) extension.  It's easiest to do this from kudu.
+Once the function app is in place, you need to manually install the [letsencrypt-siteextension](https://github.com/sjkp/letsencrypt-siteextension) extension.  It's easiest to do this from kudu (browse to `https://azure-functions-ssl-test.scm.azurewebsites.net/SiteExtensions`).
 
 ### Adding a CNAME
 
@@ -59,7 +59,11 @@ ssl-test.yourdomain.com
 
 ### Configuring the extension
 
-TThe deployment script should take care of all the required configuration (app config values, proxy, etc).  You do need to run the extention, then "next" through config settings to request the first cert.  After that, the web job should handle renewals.
+TThe deployment script should take care of all the required configuration (app config values, proxy, etc).  You do need to launch the extension, then "next" through config settings to request the first cert.  You can do this from kudu as well, browsing to `https://azure-functions-ssl-test.scm.azurewebsites.net/SiteExtensions` and clicking the "Launch" button, then proceeding to the "Request and Install Certificate" page:
+
+![request-and-install](images/request-cert.png)
+
+After the initial request, the web job should handle renewals.
 
 ## Testing
 
